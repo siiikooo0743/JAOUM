@@ -1,4 +1,3 @@
 JAOUM
-Just an other Utility Mod
 =====
-Mod for Minecraft
+Just an other Utility Mod for Minecraft
