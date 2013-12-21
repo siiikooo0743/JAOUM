@@ -35,6 +35,7 @@ public class BuildingBlock extends Block implements ITileEntityProvider
 		MinecraftForge.setBlockHarvestLevel(JAOUM.buildingBlock, 1, "pickaxe", 10);
 	}
 	
+	@Override
 	public int quantityDropped(Random par1Random)
     {
         return 0;
@@ -133,6 +134,50 @@ public class BuildingBlock extends Block implements ITileEntityProvider
 		}
     }
 
+	@Override
+	public int getLightValue(IBlockAccess world, int x, int y, int z)
+	{
+		TileEntity te = world.getBlockTileEntity(x, y, z);
+		if(te instanceof TE_BuildingBlock)
+		{
+			TE_BuildingBlock teB = (TE_BuildingBlock)te;
+			return Block.lightValue[teB.TextureBlockID];
+		}
+		return super.getLightValue(world, x, y, z);
+	}
+	
+	@Override
+	public int getLightOpacity(World world, int x, int y, int z) 
+	{
+		TileEntity te = world.getBlockTileEntity(x, y, z);
+		if(te instanceof TE_BuildingBlock)
+		{
+			TE_BuildingBlock teB = (TE_BuildingBlock)te;
+			return Block.lightOpacity[teB.TextureBlockID];
+		}
+		return super.getLightOpacity(world, x, y, z);
+	}
+	
+	/*  --- TODO:need the world and coordinates to get the color of the block
+	@Override
+	@SideOnly(Side.CLIENT)
+	public int getBlockColor() 
+	{
+		TileEntity te = world.getBlockTileEntity(x, y, z);
+		if(te instanceof TE_BuildingBlock)
+		{
+			TE_BuildingBlock teB = (TE_BuildingBlock)te;
+			int id = teB.TextureBlockID;
+			if(id != 0)
+			{
+				Block block = block.blocksList[id];
+				return block.getBlockColor();		
+			}
+		}
+		return super.getBlockColor();
+	}*/
+	
+	
 	@Override
 	public boolean hasTileEntity(int metadata)
 	{
