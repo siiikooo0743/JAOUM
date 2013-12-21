@@ -17,7 +17,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 
-@Mod(modid = "JAOUM", name = "Just an other Utilitymod", version= "pre1")
+@Mod(modid = "JAOUM", name = "Just an other Utilitymod", version= "1.0.0")
 @NetworkMod(clientSideRequired = true)
 public class JAOUM 
 {

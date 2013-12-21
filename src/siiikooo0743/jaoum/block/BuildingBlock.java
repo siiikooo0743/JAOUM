@@ -50,14 +50,6 @@ public class BuildingBlock extends Block implements ITileEntityProvider
 	}
 	
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
-    {
-        if (hasTileEntity(par6))
-        {
-            par1World.removeBlockTileEntity(par2, par3, par4);
-        }
-    }
-	
 	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
     {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
@@ -97,12 +89,6 @@ public class BuildingBlock extends Block implements ITileEntityProvider
 		
         return false;
     }
-	
-	@Override
-	public void onBlockClicked(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer) 
-	{
-
-	}
 
 	@Override
 	public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int x, int y, int z, int side)  
@@ -122,6 +108,19 @@ public class BuildingBlock extends Block implements ITileEntityProvider
     }
 	
 	@Override
+	public float getBlockHardness(World par1World, int par2, int par3, int par4) 
+	{
+		if(par1World.getBlockMetadata(par2, par3, par4) == 0)
+		{
+			return super.getBlockHardness(par1World, par2, par3, par4);
+		}
+		else
+		{
+			return(-1.0F);
+		}
+	}
+	
+	@Override
 	public boolean removeBlockByPlayer(World world, EntityPlayer player, int x, int y, int z)
     {
 		if(world.getBlockMetadata(x, y, z) == 0)
@@ -133,13 +132,7 @@ public class BuildingBlock extends Block implements ITileEntityProvider
 			return false;
 		}
     }
-	
-	@Override
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) 
-	{
-		
-	}
-	
+
 	@Override
 	public boolean hasTileEntity(int metadata)
 	{
