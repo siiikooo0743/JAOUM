@@ -1,6 +1,7 @@
 package siiikooo0743.jaoum;
 
 import siiikooo0743.jaoum.block.BuildingBlock;
+import siiikooo0743.jaoum.item.BBCrafting;
 import siiikooo0743.jaoum.item.BBSwitch;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -22,16 +23,15 @@ import cpw.mods.fml.common.registry.GameRegistry;
 //This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 //You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-@Mod(modid = "JAOUM", name = "Just an other Utilitymod", version= "1.0.0")
+@Mod(modid = "JAOUM", name = "Just an other Utilitymod", version= "1.1.0")
 @NetworkMod(clientSideRequired = true)
 public class JAOUM 
 {
 	//Config values
-	int BuildingBlockID;
-	int BBSwitchID;
 	
 	//Items
 	public static Item bBSwitch; 
+	public static Item bBCrafting;
 	
 	//Blocks
 	public static Block buildingBlock;
@@ -50,14 +50,15 @@ public class JAOUM
 		//Config
         Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
-        BuildingBlockID = config.get(Configuration.CATEGORY_BLOCK, "Building Block ID", 500).getInt();
-        BBSwitchID = config.get(Configuration.CATEGORY_ITEM, "Building Block Switch ID", 5000).getInt();
+        int BuildingBlockID = config.get(Configuration.CATEGORY_BLOCK, "Building Block ID", 500).getInt();
+        int BBSwitchID = config.get(Configuration.CATEGORY_ITEM, "Building Block Switch ID", 5000).getInt();
+        int BBCraftID = config.get(Configuration.CATEGORY_ITEM, "Building Block Crafting", 5001).getInt();
+        
 		config.save();
         
-		
-		
 		//Items
 		bBSwitch = new BBSwitch(BBSwitchID).setMaxStackSize(64).setCreativeTab(CreativeTabs.tabMisc).setUnlocalizedName("bBSwitch");
+		bBCrafting = new BBCrafting(BBCraftID).setMaxStackSize(64).setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("bBCrafting");
 		
 		//Blocks
 		buildingBlock = new BuildingBlock(BuildingBlockID).func_111022_d("jaoum:BuildingBlock").setUnlocalizedName("buldingBlock").setCreativeTab(CreativeTabs.tabBlock);
@@ -70,6 +71,7 @@ public class JAOUM
 		proxy.registerNames();
 		proxy.registerBlocksAndItems();
 		proxy.registerTileEntitys();
+		proxy.registerRecipes();
 	}
 	
 	@EventHandler

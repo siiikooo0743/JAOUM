@@ -16,7 +16,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class BBSwitch extends Item 
+public class BBSwitch extends Item
 {
 	int BlockX;
 	int BlockY;
@@ -24,10 +24,10 @@ public class BBSwitch extends Item
 	Icon on;
 	Icon off;
 	boolean isOn;
+	
 	public BBSwitch(int id) 
 	{
 		super(id);
-		
 	}
 	
 	@Override
