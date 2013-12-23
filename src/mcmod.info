@@ -1,0 +1,19 @@
+[
+{
+"modid": "JAOUM",
+"name": "Just an other Utilitymod",
+"description": "Add useful things like Buildingblocks!",
+"version": "1.1.1",
+"credits": "Created by siiikooo0743",
+"logoFile": "",
+"mcversion": "1.6.4",
+"url": "",
+"updateUrl": "",
+"authors": [ "siiikooo0743" ],
+"parent":"",
+"screenshots": [],
+"dependencies": [
+"mod_MinecraftForge"
+]
+}
+]

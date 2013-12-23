@@ -23,7 +23,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 //This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 //You should have received a copy of the GNU General Public License along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-@Mod(modid = "JAOUM", name = "Just an other Utilitymod", version= "1.1.0")
+@Mod(modid = "JAOUM", name = "Just an other Utilitymod", version= "1.1.1")
 @NetworkMod(clientSideRequired = true)
 public class JAOUM 
 {
@@ -58,10 +58,10 @@ public class JAOUM
         
 		//Items
 		bBSwitch = new BBSwitch(BBSwitchID).setMaxStackSize(64).setCreativeTab(CreativeTabs.tabMisc).setUnlocalizedName("bBSwitch");
-		bBCrafting = new BBCrafting(BBCraftID).setMaxStackSize(64).setCreativeTab(CreativeTabs.tabMaterials).setUnlocalizedName("bBCrafting");
+		bBCrafting = new BBCrafting(BBCraftID).setMaxStackSize(64).setUnlocalizedName("bBCrafting");
 		
 		//Blocks
-		buildingBlock = new BuildingBlock(BuildingBlockID).func_111022_d("jaoum:BuildingBlock").setUnlocalizedName("buldingBlock").setCreativeTab(CreativeTabs.tabBlock);
+		buildingBlock = new BuildingBlock(BuildingBlockID).setTextureName("jaoum:BuildingBlock").setUnlocalizedName("buldingBlock").setCreativeTab(CreativeTabs.tabBlock);
 	}
 	
 	@EventHandler
